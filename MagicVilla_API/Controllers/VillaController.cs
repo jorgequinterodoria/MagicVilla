@@ -54,7 +54,7 @@ namespace MagicVilla_API.Controllers
         }
         #endregion
         #region Método Get obtener una villa por Id
-        [HttpGet("id:int",Name ="GetVilla")]
+        [HttpGet("{id:int}",Name ="GetVilla")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
