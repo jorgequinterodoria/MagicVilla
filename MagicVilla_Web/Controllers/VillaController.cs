@@ -28,27 +28,27 @@ namespace MagicVilla_Web.Controllers
             }
             return View(villaList);
         }
-    }
 
-    //Get
-    public async Task<IActionResult> CrearVilla()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CrearVilla(VillaCreateDto modelo)
-    {
-        if (ModelState.IsValid)
+        //Get
+        public async Task<IActionResult> CrearVilla()
         {
-            var response = await _villaService.Crear<APIResponse>(modelo);
-
-            if(response !=null && response.IsExitoso)
-            {
-                return RedirectToAction(nameof(IndexVilla));
-            }
+            return View();
         }
-        return View(modelo);
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CrearVilla(VillaCreateDto modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _villaService.Crear<APIResponse>(modelo);
+
+                if (response != null && response.IsExitoso)
+                {
+                    return RedirectToAction(nameof(IndexVilla));
+                }
+            }
+            return View(modelo);
+        }
     }
 }
