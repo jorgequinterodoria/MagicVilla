@@ -19,4 +19,12 @@
     <ProjectReference Include="..\MagicVilla_Utilidad\MagicVilla_Utilidad.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\NumeroVilla\" />
+    <None Remove="Models\ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\NumeroVilla\" />
+    <Folder Include="Models\ViewModel\" />
+  </ItemGroup>
 </Project>
