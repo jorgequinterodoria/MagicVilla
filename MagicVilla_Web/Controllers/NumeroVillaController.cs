@@ -66,7 +66,8 @@ namespace MagicVilla_Web.Controllers
 
 				if(response != null && response.IsExitoso)
 				{
-					return RedirectToAction(nameof(IndexNumeroVilla));
+                    TempData["exitoso"] = "Numero de Villa Creada Exitosamente";
+                    return RedirectToAction(nameof(IndexNumeroVilla));
 				}
 				else
 				{
@@ -93,7 +94,7 @@ namespace MagicVilla_Web.Controllers
             return View(modelo);
 		}
         #endregion
-        #region Metodo Actualizar Numero de  villa
+        #region Metodo Actualizar Numero de villa
 
         public async Task<IActionResult> ActualizarNumeroVilla(int villaNo)
         {
@@ -132,6 +133,7 @@ namespace MagicVilla_Web.Controllers
 
                 if (response != null && response.IsExitoso)
                 {
+                    TempData["exitoso"] = "Número de Villa Actualizada Exitosamente";
                     return RedirectToAction(nameof(IndexNumeroVilla));
                 }
                 else
@@ -196,9 +198,11 @@ namespace MagicVilla_Web.Controllers
 
             if(response != null && response.IsExitoso)
             {
+                TempData["exitoso"] = "Numero de Villa Eliminada Exitosamente";
                 return RedirectToAction(nameof(IndexNumeroVilla));
             }
 
+            TempData["error"] = "Ocurrió un error";
             return View(modelo);
         }
         #endregion
