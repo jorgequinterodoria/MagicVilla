@@ -2,6 +2,7 @@
 using MagicVilla_API.Modelos;
 using MagicVilla_API.Modelos.Dto;
 using MagicVilla_API.Repositorio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -31,6 +32,7 @@ namespace MagicVilla_API.Controllers
         #endregion
         #region Método Get Obtener todas las villas
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task< ActionResult<APIResponse>> GetVillas()
         {
@@ -55,6 +57,7 @@ namespace MagicVilla_API.Controllers
         #endregion
         #region Método Get obtener una villa por Id
         [HttpGet("{id:int}",Name ="GetVilla")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -95,6 +98,7 @@ namespace MagicVilla_API.Controllers
         #endregion
         #region Método Post Crear villa
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -140,6 +144,7 @@ namespace MagicVilla_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteVilla (int id)
         {
             try
@@ -175,6 +180,7 @@ namespace MagicVilla_API.Controllers
         #endregion
         #region Método Put Actualizar toda una villa
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateVilla (int id, [FromBody] VillaUpdateDto updateDto)
@@ -195,6 +201,7 @@ namespace MagicVilla_API.Controllers
         #endregion
         #region Método Patch Actualizar un campo de una villa
         [HttpPatch("{id:int}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdatePartialVilla(int id, JsonPatchDocument<VillaUpdateDto> patchDto)
