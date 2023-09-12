@@ -10,11 +10,11 @@ namespace MagicVilla_Web.Services
         private readonly IHttpClientFactory _httpClient;
         private string _villaUrl;
 
-		public UsuarioService(IHttpClientFactory httpClient, IConfiguration configuration) :base (httpClient)
-		{
+        public UsuarioService(IHttpClientFactory httpClient, IConfiguration configuration) : base(httpClient)
+        {
             _httpClient = httpClient;
             _villaUrl = configuration.GetValue<string>("ServiceUrls:API_URL");
-		}
+        }
 
         public Task<T> Login<T>(LoginRequestDto dto)
         {
@@ -22,7 +22,7 @@ namespace MagicVilla_Web.Services
             {
                 APITipo = MagicVilla_Utilidad.DS.APITipo.POST,
                 Datos = dto,
-                Url = _villaUrl+"api/usuario/login"
+                Url = _villaUrl+"/api/usuario/login"
             });
         }
 
@@ -32,7 +32,7 @@ namespace MagicVilla_Web.Services
             {
                 APITipo = MagicVilla_Utilidad.DS.APITipo.POST,
                 Datos = dto,
-                Url = _villaUrl + "api/usuario/registrar"
+                Url = _villaUrl + "/api/usuario/registrar"
             });
         }
     }
