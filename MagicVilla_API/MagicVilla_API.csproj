@@ -21,10 +21,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Controllers\v1\" />
+    <Folder Include="Controllers\v2\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Controllers\v1\" />
+    <None Remove="Controllers\v2\" />
+  </ItemGroup>
 </Project>

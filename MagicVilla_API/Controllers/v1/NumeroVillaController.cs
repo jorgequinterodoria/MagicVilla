@@ -4,14 +4,14 @@ using MagicVilla_API.Modelos.Dto;
 using MagicVilla_API.Repositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using System.Net;
 
 
-namespace MagicVilla_API.Controllers
+namespace MagicVilla_API.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:ApiVersion}/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class NumeroVillaController : ControllerBase
     {
         #region Variables Globales
@@ -56,6 +56,7 @@ namespace MagicVilla_API.Controllers
 
             return _response;
         }
+
         #endregion
         #region Método Get obtener una villa por Id
         [HttpGet("{id:int}",Name ="GetNumeroVilla")]
