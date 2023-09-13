@@ -1,7 +1,6 @@
 ﻿using MagicVilla_API.Modelos;
-using MagicVilla_API.Repositorio.IRepositorio;
 
-namespace MagicVilla_API.Repositorio
+namespace MagicVilla_API.Repositorio.IRepositorio
 {
     public interface IVillaRepositorio : IRepositorio<Villa>
     {

@@ -29,10 +29,12 @@
     <Folder Include="Migrations\" />
     <Folder Include="Controllers\v1\" />
     <Folder Include="Controllers\v2\" />
+    <Folder Include="Modelos\Especificaciones\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Controllers\v1\" />
     <None Remove="Controllers\v2\" />
+    <None Remove="Modelos\Especificaciones\" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MagicVilla_API.Modelos;
 using MagicVilla_API.Modelos.Dto;
-using MagicVilla_API.Repositorio;
+using MagicVilla_API.Repositorio.IRepositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
