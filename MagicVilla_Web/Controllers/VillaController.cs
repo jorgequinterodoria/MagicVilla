@@ -1,9 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using AutoMapper;
 using MagicVilla_Utilidad;
 using MagicVilla_Web.Models;
 using MagicVilla_Web.Models.Dto;
 using MagicVilla_Web.Services;
 using MagicVilla_Web.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,8 +18,11 @@ namespace MagicVilla_Web.Controllers
         public VillaController(IVillaService villaService, IMapper mapper)
         {
             _mapper = mapper;
-            _villaService = villaService; 
+            _villaService = villaService;
         }
+
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> IndexVilla()
         {
             List<VillaDto> villaList = new();
@@ -31,6 +36,7 @@ namespace MagicVilla_Web.Controllers
         }
 
         //Get
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> CrearVilla()
         {
             return View();
@@ -54,6 +60,7 @@ namespace MagicVilla_Web.Controllers
         }
 
         //Put
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> ActualizarVilla(int villaId)
         {
             var response = await _villaService.Obtener<APIResponse>(villaId, HttpContext.Session.GetString(DS.SessionToken));
@@ -82,6 +89,7 @@ namespace MagicVilla_Web.Controllers
             return View(modelo);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> RemoverVilla(int villaId)
         {
             var response = await _villaService.Obtener<APIResponse>(villaId, HttpContext.Session.GetString(DS.SessionToken));
@@ -105,7 +113,7 @@ namespace MagicVilla_Web.Controllers
                 TempData["exitoso"] = "Villa Eliminada Exitosamente";
                 return RedirectToAction(nameof(IndexVilla));
                 }
-            TempData["error"] = "Ocurrió un E rror!";
+            TempData["error"] = "Ocurrió un Error al remover!";
             return View(modelo);
         }
     }

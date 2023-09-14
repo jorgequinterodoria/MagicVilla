@@ -1,5 +1,4 @@
-﻿using MagicVilla_API.Modelos;
-using MagicVilla_API.Modelos.Dto;
+﻿using MagicVilla_API.Modelos.Dto;
 
 namespace MagicVilla_API.Repositorio.IRepositorio
 {
